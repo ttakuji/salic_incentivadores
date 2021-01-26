@@ -21,8 +21,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@v1
       - name: Install dependencies
-        run: |
-          install.packages(c("tidyverse","jsonlite", "RCurl", "httr", "glue", "tidyr"))
+        run: 
+          Rscript -e 'install.packages(c("tidyverse","jsonlite", "RCurl", "httr", "glue", "tidyr"))'
       - name: Download
         run: |
           source('incentivadores.R')
