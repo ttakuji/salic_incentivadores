@@ -24,7 +24,6 @@ jobs:
         run: |
           install.packages(c("tidyverse","jsonlite", "RCurl", "httr", "glue", "tidyr" ,"rcmdcheck"))
           remotes::install_deps(dependencies = TRUE)
-        shell: Rscript {0}
       - name: Run code
         Rscript -e "source('incentivadores.R')"
       - name: Install dependencies
