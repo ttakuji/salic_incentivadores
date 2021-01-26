@@ -27,4 +27,3 @@ jobs:
         shell: Rscript {0}
       - name: Run code
         Rscript -e "source('incentivadores.R')"
-        
