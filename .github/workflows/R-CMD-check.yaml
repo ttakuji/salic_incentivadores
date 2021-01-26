@@ -10,7 +10,7 @@ on:
       - main
       - master
 
-name: R-CMD-check
+name: Download salic data
 
 jobs:
   R-CMD-check:
@@ -22,9 +22,16 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
       - name: Install dependencies
         run: |
-          install.packages(c("remotes", "rcmdcheck"))
+          install.packages(c("tidyverse","jsonlite", "RCurl", "httr", "glue", "tidyr" ,"rcmdcheck"))
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
-      - name: Check
-        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
+      - name: Run code
+        Rscript -e "source('incentivadores.R')"
         shell: Rscript {0}
+      - name: Commit results
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add incentivadores.rds
+          git commit -m 'incentivadores' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
