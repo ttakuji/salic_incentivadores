@@ -27,3 +27,11 @@ jobs:
         shell: Rscript {0}
       - name: Run code
         Rscript -e "source('incentivadores.R')"
+      - name: Install dependencies
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add incentivadores.rds
+          git commit -m update' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
+        
