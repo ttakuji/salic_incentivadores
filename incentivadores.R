@@ -28,10 +28,13 @@ urls<- urls %>%
   mutate(resposta = map(requisicao, ~fromJSON(.x)),
          funcionou = map_lgl(resposta, ~ifelse(is.null(.x$error), TRUE, FALSE)))
 
-write.csv2(urls, file = "projetos.csv")
+
 saveRDS(urls, file = "projetos.rds")
+#write.csv2(urls, file = "projetos.csv")
 
 
 
 
-fromJSON('http://api.salic.cultura.gov.br/v1/projetos/?limit=100&offset=100&')
+
+
+
