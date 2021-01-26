@@ -23,8 +23,10 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages(c("tidyverse","jsonlite", "RCurl", "httr", "glue", "tidyr" ,"rcmdcheck"))
-      - name: Run code
-        Rscript -e "source('incentivadores.R')"
+      - name: Download
+        run: |
+          source('incentivadores.R')
+        shell: Rscript {0}
       - name: Commit and add
         run: |
           git config --local user.email "actions@github.com"
