@@ -25,7 +25,7 @@ jobs:
           install.packages(c("tidyverse","jsonlite", "RCurl", "httr", "glue", "tidyr" ,"rcmdcheck"))
       - name: Run code
         Rscript -e "source('incentivadores.R')"
-      - name: Install dependencies
+      - name: Commit and add
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
