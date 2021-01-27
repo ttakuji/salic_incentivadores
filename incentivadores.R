@@ -21,7 +21,10 @@ library(tidyr)
 # 
 
 #103500
-urls <- as_tibble(seq(0,103500,by = 100)) %>% 
+#ramificar o código em 4 map 
+
+
+urls <- as_tibble(seq(0,20700,by = 100)) %>% 
   mutate(requisicao = glue('http://api.salic.cultura.gov.br/v1/projetos/?limit=100&offset={value}'))
 
 urls<- urls %>%
@@ -29,8 +32,53 @@ urls<- urls %>%
          funcionou = map_lgl(resposta, ~ifelse(is.null(.x$error), TRUE, FALSE)))
 
 
-saveRDS(urls, file = "projetos.rds")
+saveRDS(urls, file = "projetos1.rds")
+
+
+
+urls <- as_tibble(seq(20700,41400,by = 100)) %>% 
+  mutate(requisicao = glue('http://api.salic.cultura.gov.br/v1/projetos/?limit=100&offset={value}'))
+
+urls<- urls %>%
+  mutate(resposta = map(requisicao, ~fromJSON(.x)),
+         funcionou = map_lgl(resposta, ~ifelse(is.null(.x$error), TRUE, FALSE)))
+
+
+saveRDS(urls, file = "projetos2.rds")
+
+
+urls <- as_tibble(seq(41400,62100,by = 100)) %>% 
+  mutate(requisicao = glue('http://api.salic.cultura.gov.br/v1/projetos/?limit=100&offset={value}'))
+
+urls<- urls %>%
+  mutate(resposta = map(requisicao, ~fromJSON(.x)),
+         funcionou = map_lgl(resposta, ~ifelse(is.null(.x$error), TRUE, FALSE)))
+
+
+saveRDS(urls, file = "projetos3.rds")
+
+urls <- as_tibble(seq(62100,82800,by = 100)) %>% 
+  mutate(requisicao = glue('http://api.salic.cultura.gov.br/v1/projetos/?limit=100&offset={value}'))
+
+urls<- urls %>%
+  mutate(resposta = map(requisicao, ~fromJSON(.x)),
+         funcionou = map_lgl(resposta, ~ifelse(is.null(.x$error), TRUE, FALSE)))
+
+
+saveRDS(urls, file = "projetos4.rds")
+
+urls <- as_tibble(seq(82800,103500,by = 100)) %>% 
+  mutate(requisicao = glue('http://api.salic.cultura.gov.br/v1/projetos/?limit=100&offset={value}'))
+
+urls<- urls %>%
+  mutate(resposta = map(requisicao, ~fromJSON(.x)),
+         funcionou = map_lgl(resposta, ~ifelse(is.null(.x$error), TRUE, FALSE)))
+
+
+saveRDS(urls, file = "projetos5.rds")
+
+
+
 #write.csv2(urls, file = "projetos.csv")
 
-#(teste1 <- as_tibble(urls$resposta[1][[1]][2]))
-
+#criar uma função para cada chamada?
