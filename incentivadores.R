@@ -32,9 +32,5 @@ urls<- urls %>%
 saveRDS(urls, file = "projetos.rds")
 #write.csv2(urls, file = "projetos.csv")
 
-
-
-
-
-
+#(teste1 <- as_tibble(urls$resposta[1][[1]][2]))
 
