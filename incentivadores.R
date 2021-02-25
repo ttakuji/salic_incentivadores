@@ -77,8 +77,3 @@ urls<- urls %>%
 
 saveRDS(urls, file = "projetos5.rds")
 
-
-
-#write.csv2(urls, file = "projetos.csv")
-
-#criar uma função para cada chamada?
