@@ -22,7 +22,7 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
       - name: Install dependencies
         run: 
-          Rscript -e 'install.packages(c("tidyverse","jsonlite", "RCurl", "httr", "glue", "tidyr"))'
+          Rscript -e 'install.packages(c("tidyverse","jsonlite", "RCurl", "httr", "glue", "tidyr", "tidymodels", "broom"))'
       - name: Download
         run: |
           source('incentivadores.R')
